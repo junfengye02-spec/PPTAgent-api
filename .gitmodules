@@ -1,0 +1,3 @@
+[submodule "PPTAgent"]
+	path = PPTAgent
+	url = https://github.com/icip-cas/PPTAgent.git

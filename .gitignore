@@ -1,0 +1,39 @@
+# 环境变量（含 API Key）
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.p12
+
+# 运行时目录
+downloads/
+outputs/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.log
+venv/
+.venv/
+
+# PPTAgent 运行时生成
+PPTAgent/.venv/
+PPTAgent/.git/
+PPTAgent/__pycache__/
+PPTAgent/pptagent.egg-info/
+PPTAgent/workspace/
+PPTAgent/runs/
+PPTAgent/node_modules/
+PPTAgent/**/config.yaml
+PPTAgent/**/mcp.json
+PPTAgent/**/.tools.json
+PPTAgent/**/test_output/
+
+# IDE
+.idea/
+.vscode/
+
+# macOS
+.DS_Store
