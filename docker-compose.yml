@@ -1,0 +1,41 @@
+services:
+  init-sandbox:
+    image: docker:cli
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        if docker image inspect deeppresenter-sandbox:0.1.0 >/dev/null 2>&1; then
+          echo "sandbox image already exists, skipping pull"
+        else
+          echo "pulling sandbox image..."
+          docker pull forceless/deeppresenter-sandbox:0.1.0
+          docker tag forceless/deeppresenter-sandbox:0.1.0 deeppresenter-sandbox:0.1.0
+          echo "sandbox image ready"
+        fi
+    restart: "no"
+
+  api-server:
+    build: .
+    depends_on:
+      init-sandbox:
+        condition: service_completed_successfully
+    ports:
+      - "${API_PORT:-8000}:8000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ppt-outputs:/app/outputs
+      - ppt-downloads:/app/downloads
+      - deeppresenter-cache:/root/.cache/deeppresenter
+    env_file:
+      - .env
+    environment:
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+    restart: unless-stopped
+
+volumes:
+  ppt-outputs:
+  ppt-downloads:
+  deeppresenter-cache:

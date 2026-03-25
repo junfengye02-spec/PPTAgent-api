@@ -35,6 +35,8 @@ METASO_API_KEY = os.getenv("METASO_API_KEY", "")
 METASO_API_URL = "https://metaso.cn/api/v1/search"
 FAKE_UA = UserAgent()
 
+debug(f"Metaso search tool loaded, API key: {METASO_API_KEY[:12]}...")
+
 
 async def metaso_request(query: str, max_results: int = 5) -> dict[str, Any]:
     """调用秘塔搜索 API"""

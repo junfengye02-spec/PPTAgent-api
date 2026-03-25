@@ -7,6 +7,10 @@
 *.crt
 *.p12
 
+# 配置文件（含 API Key，仅保留示例）
+config/config.yaml
+config/mcp.json
+
 # 运行时目录
 downloads/
 outputs/
@@ -21,6 +25,7 @@ venv/
 # PPTAgent 运行时生成
 PPTAgent/.venv/
 PPTAgent/.git/
+PPTAgent/.github/
 PPTAgent/__pycache__/
 PPTAgent/pptagent.egg-info/
 PPTAgent/workspace/
@@ -30,10 +35,13 @@ PPTAgent/**/config.yaml
 PPTAgent/**/mcp.json
 PPTAgent/**/.tools.json
 PPTAgent/**/test_output/
+PPTAgent/**/images/*.png
+PPTAgent/**/images/*.jpg
 
 # IDE
 .idea/
 .vscode/
+.cursor/
 
 # macOS
 .DS_Store

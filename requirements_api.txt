@@ -1,7 +1,7 @@
 fastapi[all]
 uvicorn[standard]
 httpx
-python-dotenv
 pydantic>=2.0
-pyyaml
 requests
+python-dotenv
+PyYAML

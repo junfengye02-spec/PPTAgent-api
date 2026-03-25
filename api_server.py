@@ -17,6 +17,7 @@ from contextlib import asynccontextmanager
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
+from urllib.parse import unquote
 
 import httpx
 import yaml
@@ -246,6 +247,7 @@ async def download_file(url: str, dest_dir: Path) -> Path:
             filename = cd.split("filename=")[-1].strip('"').strip("'")
         else:
             filename = url.split("/")[-1].split("?")[0]
+        filename = Path(unquote(filename)).name
         if not filename:
             filename = "document.pdf"
 
